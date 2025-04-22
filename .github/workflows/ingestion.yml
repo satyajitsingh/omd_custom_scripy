@@ -1,0 +1,35 @@
+name: Metadata Ingestion (Self-Hosted)
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  ingest:
+    runs-on: self-hosted  # Target your self-hosted runner
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.10"
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run ingestion script
+      run: |
+        python src/ingest.py
+
+    - name: Upload logs on failure
+      if: failure()
+      uses: actions/upload-artifact@v3
+      with:
+        name: ingest-logs
+        path: logs/
