@@ -1,14 +1,11 @@
-name: Metadata Ingestion (Self-Hosted)
+name: Metadata Ingestion (Manual)
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+  workflow_dispatch:  # Manual trigger only
 
 jobs:
   ingest:
-    runs-on: self-hosted  # Target your self-hosted runner
+    runs-on: self-hosted  # Make sure your runner is set up
 
     steps:
     - name: Checkout repository
