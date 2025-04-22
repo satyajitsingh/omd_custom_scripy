@@ -5,7 +5,7 @@ on:
 
 jobs:
   ingest:
-    runs-on: windows  # Make sure your runner is set up
+    runs-on: windows-latest  # Make sure your runner is set up
 
     steps:
     - name: Checkout repository
