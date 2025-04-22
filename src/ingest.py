@@ -41,7 +41,7 @@ def get_or_create(entity, payload, name_field='name'):
 for _, row in df.iterrows():
     service_payload = {
         "name": row["service_name"],
-        "description": row["service_description"],
+        "description": row["Service_description"],
         "serviceType": "CustomDatabase"
     }
     service = get_or_create("services/databaseServices", service_payload)
