@@ -8,6 +8,9 @@ jobs:
     runs-on: windows-latest  # Make sure your runner is set up
 
     steps:
+    - name: Ensure logs folder exists
+      run: mkdir logs
+      
     - name: Checkout repository
       uses: actions/checkout@v3
 
